@@ -2,133 +2,171 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATTA PATHAN | SIM DB PRO</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ATTA PATHAN VIP DB</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
     
     <style>
-        :root { --wa-green: #25D366; }
-        body { background-color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; }
-        .premium-card { background: white; border-radius: 30px; box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05); border: 1px solid #f1f5f9; }
-        .profile-border { width: 110px; height: 110px; border-radius: 50%; padding: 4px; background: linear-gradient(135deg, #10b981, #3b82f6); margin: 0 auto; }
-        .profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid white; }
-        .loader-spin { width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.3); border-top: 3px solid white; border-radius: 50%; animation: spin 0.8s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        :root {
+            --primary: #0099ff;
+            --accent: #00d4ff;
+            --text-main: #ffffff;
+            --text-sub: #e0e0e0;
+            --glass-bg: rgba(0, 0, 0, 0.75); /* Darker glass effect */
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0; padding: 20px;
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            display: flex; flex-direction: column; align-items: center;
+            min-height: 100vh;
+            
+            /* --- FULL SCREEN BACKGROUND PIC --- */
+            background-image: url('https://multi-host.ct.ws//sites/1770017289495.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Image fixed rahegi */
+            background-repeat: no-repeat;
+        }
+
+        /* Overlay to make text readable */
+        body::before {
+            content: '';
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.4); /* Image ke upar halka andhera */
+            z-index: -1;
+        }
+
+        .app-container { width: 100%; max-width: 420px; text-align: center; z-index: 1; }
+
+        /* --- LOGO / PROFILE --- */
+        .profile-wrapper { margin-top: 20px; margin-bottom: 15px; }
+        .profile-pic {
+            width: 100px; height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 20px rgba(0, 153, 255, 0.5);
+            /* Aapki Purani Pic */
+            background-image: url('https://multi-host.ct.ws//sites/atta.jpg'); 
+            background-size: cover; background-position: center;
+            display: inline-block;
+        }
+
+        h1 {
+            font-family: 'Rajdhani', sans-serif; font-size: 2.2rem;
+            text-transform: uppercase; font-weight: 700; margin: 5px 0;
+            color: #fff; text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .subtitle { 
+            font-size: 1rem; color: var(--primary); font-weight: 700; 
+            margin-bottom: 25px; background: rgba(0,0,0,0.5); 
+            display: inline-block; padding: 2px 15px; border-radius: 20px;
+        }
+
+        /* --- SEARCH BOX GLASS EFFECT --- */
+        .search-card {
+            background: var(--glass-bg); 
+            backdrop-filter: blur(10px); /* Blur effect */
+            border: 1px solid var(--border);
+            border-radius: 16px; padding: 25px 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        input {
+            width: 100%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+            color: #fff; padding: 16px; font-size: 1.1rem; border-radius: 8px;
+            margin-bottom: 15px; transition: 0.3s; text-align: center;
+        }
+        input::placeholder { color: #ccc; }
+
+        .btn-main {
+            width: 100%; background: var(--primary); color: white;
+            border: none; padding: 16px; font-size: 1.1rem; font-weight: 700;
+            border-radius: 8px; cursor: pointer; font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase; box-shadow: 0 4px 15px rgba(0, 153, 255, 0.4);
+        }
+
+        /* --- DATA CARDS --- */
+        .data-card {
+            background: rgba(0, 0, 0, 0.85); border-radius: 12px;
+            margin-top: 20px; border-left: 5px solid var(--primary);
+            padding: 15px; border: 1px solid var(--border);
+            text-align: left;
+        }
+        .dc-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .lbl { color: var(--primary); font-size: 0.8rem; font-weight: 700; }
+        .val { font-weight: 600; font-size: 0.95rem; }
+
+        /* --- WHATSAPP --- */
+        .wa-btn {
+            display: flex; align-items: center; justify-content: center;
+            background: #25D366; color: white; padding: 15px; border-radius: 12px;
+            text-decoration: none; margin-top: 30px; font-weight: 700; gap: 10px;
+        }
+
+        .footer { margin-top: 40px; color: #fff; font-size: 0.8rem; font-weight: 600; text-shadow: 1px 1px 5px #000; }
     </style>
 </head>
-<body class="min-h-screen p-4">
+<body>
 
-    <div class="max-w-2xl mx-auto">
-        <div class="flex flex-col items-center text-center mb-8">
-            <div class="profile-border mb-4">
-                <img src="https://multi-host.ct.ws//sites/1770017289495.png" alt="Atta Pathan" class="profile-img">
-            </div>
-            <h1 class="text-4xl font-extrabold text-slate-900 italic tracking-tight">ATTA <span class="text-emerald-500">PATHAN</span></h1>
-            <p class="text-slate-400 font-bold text-[10px] tracking-widest uppercase">Elite Database Manager</p>
+    <div class="app-container">
+        <div class="profile-wrapper">
+            <div class="profile-pic"></div>
         </div>
 
-        <div class="premium-card p-6 mb-6">
-            <div class="space-y-4">
-                <input type="text" id="phoneInput" placeholder="Enter Number (0324...)" 
-                    class="w-full px-6 py-5 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-emerald-100 outline-none font-bold text-slate-700 text-lg">
-                
-                <div class="flex gap-3">
-                    <button onclick="fetchData()" id="searchBtn" class="flex-1 bg-slate-900 hover:bg-black text-white py-5 rounded-2xl font-extrabold flex items-center justify-center gap-3 transition-all">
-                        <span id="btnText">SEARCH DATABASE</span>
-                        <div id="btnLoader" class="loader-spin hidden"></div>
-                    </button>
-                    
-                    <a href="https://whatsapp.com/channel/0029VbBbJoMD38CXtkQTqB0c" target="_blank" class="bg-[#25D366] text-white w-[70px] flex items-center justify-center rounded-2xl text-2xl shadow-lg">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                </div>
-            </div>
+        <h1>ATTA PATHAN</h1>
+        <p class="subtitle">VIP DATABASE 2026</p>
+
+        <div class="search-card">
+            <input type="number" id="target" placeholder="Enter Mobile Number">
+            <button class="btn-main" onclick="fetchData()">SEARCH NOW</button>
         </div>
 
-        <div id="contentArea" class="hidden space-y-6">
-            <div id="captureArea" class="p-6 rounded-[32px] bg-white border border-slate-100 shadow-sm">
-                <div id="resultsList" class="space-y-4"></div>
-            </div>
-            
-            <button onclick="takeScreenshot()" class="w-full bg-slate-100 py-4 rounded-2xl font-black text-slate-600">SAVE TO GALLERY</button>
+        <div id="results-area"></div>
 
-            <div class="bg-slate-900 p-6 rounded-[24px] text-white text-center border-t-4 border-emerald-500">
-                <h3 class="text-emerald-400 font-black italic uppercase mb-2">⚠️ Elite Access Only</h3>
-                <p class="text-xs text-slate-300 mb-4">Latest 2026 Fresh Records are available only in our secret channel.</p>
-                <a href="https://whatsapp.com/channel/0029VbBbJoMD38CXtkQTqB0c" class="block w-full bg-emerald-500 text-slate-900 py-4 rounded-xl font-black">JOIN OFFICIAL CHANNEL</a>
-            </div>
-        </div>
+        <a href="https://whatsapp.com/channel/0029VbBLMGrAYlUFwGLNCG42" target="_blank" class="wa-btn">
+            <i class="fab fa-whatsapp"></i> JOIN CHANNEL
+        </a>
 
-        <div id="errorState" class="hidden text-center p-10 premium-card mt-6">
-            <h2 class="text-xl font-black text-red-500 mb-2">Server Busy / No Data</h2>
-            <p class="text-slate-400 text-sm mb-6">Hamara channel join karein naye bypass method ke liye.</p>
-            <a href="https://whatsapp.com/channel/0029VbBbJoMD38CXtkQTqB0c" class="bg-emerald-500 text-white px-8 py-3 rounded-xl font-bold">Join Channel</a>
+        <div class="footer">
+            POWERED BY ATTA PATHAN SYSTEM
         </div>
     </div>
 
     <script>
+        const API_URL = "https://sim.f-a-k.workers.dev/?q="; 
         async function fetchData() {
-            let num = document.getElementById('phoneInput').value.trim();
-            if(!num) return alert("Number Enter Karein!");
-            if(num.startsWith('0')) num = num.substring(1);
-
-            document.getElementById('btnLoader').classList.remove('hidden');
-            document.getElementById('contentArea').classList.add('hidden');
-            document.getElementById('errorState').classList.add('hidden');
-
-            // 🛠️ MULTI-BYPASS API SYSTEM
-            const apis = [
-                `https://sim-details-api.vercel.app/search?q=${num}`,
-                `https://sim.f-a-k.workers.dev/?q=${num}`,
-                `https://pak-sim-info.ftgmhacks.workers.dev/?num=0${num}`,
-                `https://sim-api-gold.vercel.app/search/${num}`
-            ];
-
-            let found = false;
-            for (let url of apis) {
-                try {
-                    const response = await fetch(url, { method: 'GET' });
-                    const res = await response.json();
-                    const data = res.data?.data || res.data || res.records || null;
-
-                    if (data && (Array.isArray(data) ? data.length > 0 : true)) {
-                        renderData(Array.isArray(data) ? data : [data]);
-                        found = true;
-                        break;
-                    }
-                } catch (e) { console.log("Trying next server..."); }
-            }
-
-            if (!found) document.getElementById('errorState').classList.remove('hidden');
-            document.getElementById('btnLoader').classList.add('hidden');
-        }
-
-        function renderData(records) {
-            const list = document.getElementById('resultsList');
-            list.innerHTML = `<div class="text-center pb-4 border-b border-dashed mb-4"><div class="text-emerald-500 font-black text-lg">SYSTEM VERIFIED REPORT</div><p class="text-[9px] text-slate-400 font-bold uppercase">Admin: Atta Pathan Bajaury</p></div>`;
+            const query = document.getElementById('target').value;
+            const resArea = document.getElementById('results-area');
+            if(!query || query.length < 3) return alert("Please enter number!");
             
-            records.forEach(item => {
-                list.innerHTML += `
-                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 mb-2">
-                        <div class="text-emerald-600 font-black mb-2 border-b pb-1 uppercase italic">${item.Name || item.name || 'N/A'}</div>
-                        <div class="flex justify-between text-sm mb-1"><span class="text-slate-400 font-bold uppercase text-[9px]">Mobile</span><span class="font-bold text-slate-700">${item.Mobile || item.number || 'N/A'}</span></div>
-                        <div class="flex justify-between text-sm mb-1"><span class="text-slate-400 font-bold uppercase text-[9px]">CNIC</span><span class="font-bold text-slate-700">${item.CNIC || item.cnic || 'N/A'}</span></div>
-                        <div class="text-[11px] font-semibold text-slate-500 mt-2 bg-white p-2 rounded-lg border border-slate-100">${item.Address || item.address || 'N/A'}</div>
-                    </div>`;
-            });
-            document.getElementById('contentArea').classList.remove('hidden');
-        }
-
-        function takeScreenshot() {
-            html2canvas(document.getElementById('captureArea')).then(canvas => {
-                const link = document.createElement('a');
-                link.download = `Atta_Report.png`;
-                link.href = canvas.toDataURL();
-                link.click();
-            });
+            resArea.innerHTML = '<p style="text-align:center;">🔍 Loading...</p>';
+            
+            try {
+                const req = await fetch(API_URL + query);
+                const json = await req.json();
+                resArea.innerHTML = '';
+                
+                if(json.status === 'success') {
+                    const data = Array.isArray(json.data) ? json.data : [json.data];
+                    data.forEach(rec => {
+                        let card = '<div class="data-card">';
+                        for (const [k, v] of Object.entries(rec)) {
+                            if(v && v !== "N/A") card += `<div class="dc-row"><span class="lbl">${k}</span><span class="val">${v}</span></div>`;
+                        }
+                        card += '</div>';
+                        resArea.innerHTML += card;
+                    });
+                } else {
+                    resArea.innerHTML = '<div class="data-card" style="border-left-color:red; text-align:center;">❌ No Record Found</div>';
+                }
+            } catch (e) {
+                resArea.innerHTML = '<p style="color:red; text-align:center">Connection Error</p>';
+            }
         }
     </script>
 </body>
