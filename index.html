@@ -9,12 +9,11 @@
     
     <style>
         :root {
-            --primary: #0099ff;
-            --accent: #00d4ff;
+            --primary: #00d4ff; /* Cyan Neon */
+            --secondary: #0099ff; /* Bright Blue */
+            --bg-overlay: rgba(5, 8, 19, 0.7); /* Deep Glass */
             --text-main: #ffffff;
-            --text-sub: #e0e0e0;
-            --glass-bg: rgba(0, 0, 0, 0.75); /* Darker glass effect */
-            --border: rgba(255, 255, 255, 0.1);
+            --border-glow: rgba(0, 212, 255, 0.3);
         }
 
         body {
@@ -24,91 +23,146 @@
             display: flex; flex-direction: column; align-items: center;
             min-height: 100vh;
             
-            /* --- FULL SCREEN BACKGROUND PIC --- */
-            background-image: url('https://multi-host.ct.ws//sites/1770017289495.png');
+            /* --- IMPROVED COLORFUL BACKGROUND --- */
+            background: linear-gradient(135deg, rgba(0, 153, 255, 0.2), rgba(0, 0, 0, 0.8)), 
+                        url('https://multi-host.ct.ws//sites/1770017289495.png');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Image fixed rahegi */
+            background-attachment: fixed;
             background-repeat: no-repeat;
         }
 
-        /* Overlay to make text readable */
-        body::before {
-            content: '';
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.4); /* Image ke upar halka andhera */
-            z-index: -1;
-        }
+        .app-container { width: 100%; max-width: 420px; text-align: center; position: relative; }
 
-        .app-container { width: 100%; max-width: 420px; text-align: center; z-index: 1; }
-
-        /* --- LOGO / PROFILE --- */
-        .profile-wrapper { margin-top: 20px; margin-bottom: 15px; }
+        /* --- GLOWING PROFILE --- */
         .profile-pic {
-            width: 100px; height: 100px;
+            width: 110px; height: 110px;
             border-radius: 50%;
-            border: 2px solid var(--primary);
-            box-shadow: 0 0 20px rgba(0, 153, 255, 0.5);
-            /* Aapki Purani Pic */
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 30px var(--primary), inset 0 0 10px var(--primary);
             background-image: url('https://multi-host.ct.ws//sites/atta.jpg'); 
             background-size: cover; background-position: center;
-            display: inline-block;
+            display: inline-block; margin-top: 20px;
         }
 
         h1 {
-            font-family: 'Rajdhani', sans-serif; font-size: 2.2rem;
-            text-transform: uppercase; font-weight: 700; margin: 5px 0;
-            color: #fff; text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+            font-family: 'Rajdhani', sans-serif; font-size: 2.4rem;
+            text-transform: uppercase; font-weight: 700; margin: 10px 0;
+            background: linear-gradient(to bottom, #fff, var(--primary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
         }
 
-        .subtitle { 
-            font-size: 1rem; color: var(--primary); font-weight: 700; 
-            margin-bottom: 25px; background: rgba(0,0,0,0.5); 
-            display: inline-block; padding: 2px 15px; border-radius: 20px;
-        }
-
-        /* --- SEARCH BOX GLASS EFFECT --- */
+        /* --- PREMIUM GLASS CARD --- */
         .search-card {
-            background: var(--glass-bg); 
-            backdrop-filter: blur(10px); /* Blur effect */
-            border: 1px solid var(--border);
-            border-radius: 16px; padding: 25px 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background: var(--bg-overlay); 
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px; padding: 30px 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            margin-top: 10px;
         }
 
         input {
-            width: 100%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-            color: #fff; padding: 16px; font-size: 1.1rem; border-radius: 8px;
-            margin-bottom: 15px; transition: 0.3s; text-align: center;
+            width: 100%; background: rgba(255,255,255,0.05); 
+            border: 1px solid var(--border-glow);
+            color: #fff; padding: 18px; font-size: 1.1rem; border-radius: 12px;
+            margin-bottom: 20px; transition: 0.3s; text-align: center;
         }
-        input::placeholder { color: #ccc; }
+        input:focus { border-color: var(--primary); box-shadow: 0 0 15px var(--border-glow); outline: none; }
 
         .btn-main {
-            width: 100%; background: var(--primary); color: white;
-            border: none; padding: 16px; font-size: 1.1rem; font-weight: 700;
-            border-radius: 8px; cursor: pointer; font-family: 'Rajdhani', sans-serif;
-            text-transform: uppercase; box-shadow: 0 4px 15px rgba(0, 153, 255, 0.4);
+            width: 100%; background: linear-gradient(90deg, var(--secondary), var(--primary));
+            color: white; border: none; padding: 18px; font-size: 1.2rem; font-weight: 700;
+            border-radius: 12px; cursor: pointer; font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase; letter-spacing: 1px; transition: 0.4s;
         }
+        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5); }
 
         /* --- DATA CARDS --- */
         .data-card {
-            background: rgba(0, 0, 0, 0.85); border-radius: 12px;
-            margin-top: 20px; border-left: 5px solid var(--primary);
-            padding: 15px; border: 1px solid var(--border);
-            text-align: left;
+            background: rgba(0, 0, 0, 0.85); border-radius: 15px;
+            margin-top: 20px; border-left: 6px solid var(--primary);
+            padding: 18px; border: 1px solid var(--border-glow);
+            text-align: left; animation: slideUp 0.5s ease;
         }
-        .dc-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .lbl { color: var(--primary); font-size: 0.8rem; font-weight: 700; }
-        .val { font-weight: 600; font-size: 0.95rem; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .dc-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .lbl { color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; }
+        .val { font-weight: 600; font-size: 1rem; color: #fff; }
 
-        /* --- WHATSAPP --- */
+        /* --- UPDATED WHATSAPP LINK --- */
         .wa-btn {
             display: flex; align-items: center; justify-content: center;
-            background: #25D366; color: white; padding: 15px; border-radius: 12px;
-            text-decoration: none; margin-top: 30px; font-weight: 700; gap: 10px;
+            background: linear-gradient(90deg, #128C7E, #25D366);
+            color: white; padding: 16px; border-radius: 15px;
+            text-decoration: none; margin-top: 30px; font-weight: 700; gap: 12px;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
         }
 
-        .footer { margin-top: 40px; color: #fff; font-size: 0.8rem; font-weight: 600; text-shadow: 1px 1px 5px #000; }
+        .footer { margin-top: 40px; color: rgba(255,255,255,0.6); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="profile-pic"></div>
+
+        <h1>ATTA PATHAN</h1>
+        <p style="color:var(--primary); font-weight:700; margin-top:-10px; letter-spacing:2px;">VIP SYSTEM v2.0</p>
+
+        <div class="search-card">
+            <input type="number" id="target" placeholder="ENTER MOBILE NUMBER">
+            <button class="btn-main" onclick="fetchData()">RUN SEARCH <i class="fas fa-bolt"></i></button>
+        </div>
+
+        <div id="results-area"></div>
+
+        <a href="https://whatsapp.com/channel/0029VbBbJoMD38CXtkQTqB0c" target="_blank" class="wa-btn">
+            <i class="fab fa-whatsapp fa-lg"></i> JOIN ATTA PATHAN VIP CHANNEL
+        </a>
+
+        <div class="footer">
+            SECURED BY ATTA PATHAN
+        </div>
+    </div>
+
+    <script>
+        const API_URL = "https://sim.f-a-k.workers.dev/?q="; 
+        async function fetchData() {
+            const query = document.getElementById('target').value;
+            const resArea = document.getElementById('results-area');
+            if(!query || query.length < 3) return alert("Please enter valid number!");
+            
+            resArea.innerHTML = '<div class="data-card" style="text-align:center; border-left:none;">🔍 Fetching Encrypted Data...</div>';
+            
+            try {
+                const req = await fetch(API_URL + query);
+                const json = await req.json();
+                resArea.innerHTML = '';
+                
+                if(json.status === 'success') {
+                    const data = Array.isArray(json.data) ? json.data : [json.data];
+                    data.forEach(rec => {
+                        let card = '<div class="data-card">';
+                        for (const [k, v] of Object.entries(rec)) {
+                            if(v && v !== "N/A") card += `<div class="dc-row"><span class="lbl">${k}</span><span class="val">${v}</span></div>`;
+                        }
+                        card += '</div>';
+                        resArea.innerHTML += card;
+                    });
+                } else {
+                    resArea.innerHTML = '<div class="data-card" style="border-left-color:#ff4444; text-align:center;">❌ No Record Found In Database</div>';
+                }
+            } catch (e) {
+                resArea.innerHTML = '<div class="data-card" style="border-left-color:#ff4444; text-align:center;">⚠️ Server Connection Failed</div>';
+            }
+        }
+    </script>
+</body>
+</html>
+
     </style>
 </head>
 <body>
