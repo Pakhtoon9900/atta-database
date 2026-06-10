@@ -2,335 +2,724 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ATTA PATHAN DATABASE - FULL EDITION</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>ATTA PATHAN | Elite Intelligence Suite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* THEME VARIABLES */
-:root {
-    --bg-color: #0a0a0c;
-    --card-bg: #121214;
-    --text-color: #ffffff;
-    --input-bg: #1a1a1d;
-    
-    /* Default Shade (Purple) */
-    --primary-color: #9c27b0;
-    --accent-color: #d1c4e9;
-    --outline-color: #311b92;
-}
+  /* ============================================================
+     PREMIUM LUXURY THEME - PROFESSIONAL DARK
+     ============================================================ */
+  :root {
+    --primary: #8B5CF6;
+    --primary-dark: #6D28D9;
+    --primary-glow: rgba(139, 92, 246, 0.3);
+    --secondary: #0EA5E9;
+    --accent-gold: #F59E0B;
+    --bg-dark: #05050A;
+    --bg-elevated: #0F0F1A;
+    --bg-card: rgba(18, 18, 28, 0.85);
+    --bg-card-solid: #12121C;
+    --glass-border: rgba(139, 92, 246, 0.15);
+    --glass-border-light: rgba(255, 255, 255, 0.05);
+    --text-primary: #FFFFFF;
+    --text-secondary: #A1A1B5;
+    --text-muted: #6B6B84;
+    --success: #10B981;
+    --error: #EF4444;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 24px;
+    --shadow-sm: 0 4px 20px rgba(0,0,0,0.4);
+    --shadow-md: 0 8px 32px rgba(0,0,0,0.5);
+    --shadow-glow: 0 0 30px var(--primary-glow);
+    --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
 
-/* 10 COLOR SHADES DEFINITIONS */
-[data-shade="0"] { --primary-color: #9c27b0; --accent-color: #d1c4e9; --outline-color: #311b92; } /* Purple */
-[data-shade="1"] { --primary-color: #e53935; --accent-color: #ffcdd2; --outline-color: #b71c1c; } /* Red */
-[data-shade="2"] { --primary-color: #ffb300; --accent-color: #ffecb3; --outline-color: #ff8f00; } /* Gold */
-[data-shade="3"] { --primary-color: #43a047; --accent-color: #c8e6c9; --outline-color: #1b5e20; } /* Green */
-[data-shade="4"] { --primary-color: #1e88e5; --accent-color: #bbdefb; --outline-color: #0d47a1; } /* Blue */
-[data-shade="5"] { --primary-color: #d81b60; --accent-color: #f8bbd0; --outline-color: #880e4f; } /* Pink */
-[data-shade="6"] { --primary-color: #00acc1; --accent-color: #b2ebf2; --outline-color: #006064; } /* Cyan */
-[data-shade="7"] { --primary-color: #ff5722; --accent-color: #ffccbc; --outline-color: #e64a19; } /* Orange */
-[data-shade="8"] { --primary-color: #795548; --accent-color: #d7ccc8; --outline-color: #4e342e; } /* Brown */
-[data-shade="9"] { --primary-color: #607d8b; --accent-color: #cfd8dc; --outline-color: #37474f; } /* Grey */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-/* MULTI-COLOUR RGB ANIMATION */
-[data-shade="multi"] {
-    --primary-color: #9c27b0; 
-    --accent-color: #ffffff;
-    --outline-color: #444;
-}
-[data-shade="multi"] .brand-title, 
-[data-shade="multi"] .result-header,
-[data-shade="multi"] .search-btn,
-[data-shade="multi"] .header-img,
-[data-shade="multi"] .wa-main-btn {
-    animation: rgbAnim 6s infinite linear;
-}
+  body {
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
 
-@keyframes rgbAnim {
-    0% { background: #ff0000; border-color: #ff0000; color: white; box-shadow: 0 0 15px #ff0000; }
-    25% { background: #ffff00; border-color: #ffff00; box-shadow: 0 0 15px #ffff00; }
-    50% { background: #00ff00; border-color: #00ff00; box-shadow: 0 0 15px #00ff00; }
-    75% { background: #0000ff; border-color: #0000ff; box-shadow: 0 0 15px #0000ff; }
-    100% { background: #ff0000; border-color: #ff0000; box-shadow: 0 0 15px #ff0000; }
-}
+  /* Premium Scrollbar */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg-elevated); }
+  ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
 
-*{box-sizing:border-box;margin:0;padding:0;font-family: 'Segoe UI', sans-serif; transition: all 0.4s ease;}
+  /* Glassmorphism Core */
+  .glass-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    transition: var(--transition);
+  }
 
-body{
-    background: var(--bg-color);
-    color: var(--text-color);
-    background-image: radial-gradient(circle at 50% 50%, #16161a 0%, #0a0a0c 100%);
-    min-height: 100vh;
-}
+  .glass-card:hover {
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: var(--shadow-glow);
+  }
 
-.app{
-    max-width:520px;
-    margin:auto;
-    padding:15px;
-    position: relative;
-}
-
-/* THEME SYSTEM */
-.theme-container {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    z-index: 2000;
-}
-
-.theme-btn {
-    background: var(--primary-color);
-    color: white;
+  /* Buttons */
+  .btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     border: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-size: 11px;
-    font-weight: bold;
+    border-radius: var(--radius-md);
+    padding: 12px 24px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    color: white;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-    text-transform: uppercase;
-}
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+  }
 
-.theme-bar {
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+    filter: brightness(1.05);
+  }
+
+  .btn-secondary {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 10px 20px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: var(--primary);
+    color: var(--text-primary);
+  }
+
+  /* Inputs */
+  .input-premium {
+    width: 100%;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 14px 18px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    transition: var(--transition);
+    outline: none;
+  }
+
+  .input-premium:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-glow);
+  }
+
+  /* Layout */
+  #main-content {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px 16px 100px;
+  }
+
+  /* Splash Screen - Luxury */
+  #splash {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--bg-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s, visibility 0.8s;
+  }
+
+  #splash.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .splash-logo {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 32px;
+    box-shadow: 0 0 60px var(--primary-glow);
+    animation: pulseGlow 2s infinite alternate;
+  }
+
+  .splash-logo svg {
+    width: 60px;
+    height: 60px;
+    color: white;
+  }
+
+  @keyframes pulseGlow {
+    0% { box-shadow: 0 0 20px rgba(139,92,246,0.3); transform: scale(1); }
+    100% { box-shadow: 0 0 60px rgba(139,92,246,0.7); transform: scale(1.02); }
+  }
+
+  .splash-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff, var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 12px;
+  }
+
+  .splash-sub {
+    color: var(--text-muted);
+    letter-spacing: 0.2em;
+    font-size: 0.7rem;
+    margin-bottom: 40px;
+  }
+
+  /* Join Popup */
+  #join-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 8888;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(12px);
     display: none;
-    background: var(--card-bg);
-    border: 1px solid var(--primary-color);
-    border-radius: 10px;
-    margin-top: 8px;
-    padding: 10px;
-    width: 160px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #join-popup.show { display: flex; }
+
+  /* Sidebar */
+  #sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 280px;
+    background: var(--bg-card-solid);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid var(--glass-border);
+    z-index: 1000;
+    padding: 28px 20px;
+    transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .sidebar-closed { transform: translateX(-100%); }
+  .sidebar-open { transform: translateX(0); }
+
+  .sb-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    display: none;
+  }
+  .sb-overlay.show { display: block; }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .nav-item:hover {
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--text-primary);
+    transform: translateX(5px);
+  }
+
+  /* Top Navigation */
+  #topnav {
+    position: sticky;
+    top: 0;
+    z-index: 500;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(5,5,10,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+  }
+
+  .logo-text {
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff, var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Tabs */
+  .tabs-container {
+    display: flex;
+    gap: 8px;
+    background: var(--bg-card);
+    padding: 6px;
+    border-radius: 60px;
+    margin-bottom: 28px;
+    border: 1px solid var(--glass-border);
+  }
+
+  .tab-btn {
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: 40px;
+    background: transparent;
+    border: none;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+  }
+
+  .tab-btn.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 2px 8px rgba(139,92,246,0.4);
+  }
+
+  /* Result Cards */
+  .result-item {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    margin-bottom: 16px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+  }
+
+  .result-header {
+    padding: 16px 20px;
+    background: rgba(139,92,246,0.08);
+    border-bottom: 1px solid var(--glass-border);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .result-row {
+    display: flex;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--glass-border-light);
+  }
+
+  .result-label {
+    width: 110px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+  }
+
+  .result-value {
+    flex: 1;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .accent-text {
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  /* Tabs Content Visibility */
+  .tab-panel {
+    display: none;
+  }
+  .tab-panel.active {
+    display: block;
+  }
+
+  /* Theme Panel */
+  #theme-panel {
+    position: fixed;
+    top: 70px;
+    right: 16px;
+    z-index: 700;
+    background: var(--bg-card-solid);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    width: 220px;
+    display: none;
     flex-direction: column;
     gap: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-}
+    box-shadow: var(--shadow-md);
+  }
 
-.theme-bar.active { display: flex; }
+  #theme-panel.show { display: flex; }
 
-.shade-bar {
-    width: 100%; height: 32px;
-    border-radius: 5px; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 10px; font-weight: bold; color: white;
-    border: 1px solid rgba(255,255,255,0.1);
-}
+  .theme-opt {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+  }
 
-/* HEADER SECTION */
-.header-container { text-align: center; margin-bottom: 30px; padding-top: 50px; }
-.header-img {
-    width: 130px; height: 130px; border-radius: 12px;
-    object-fit: cover; border: 3px solid var(--primary-color);
-    box-shadow: 0 0 25px var(--primary-color);
-    display: block; margin: 0 auto 15px auto;
-}
-.brand-title { font-weight: 900; font-size: 28px; color: var(--primary-color); text-transform: uppercase; letter-spacing: 4px; }
+  .theme-opt:hover { background: rgba(139,92,246,0.1); }
+  .theme-opt.active { background: rgba(139,92,246,0.2); border-left: 3px solid var(--primary); }
 
-/* SEARCH SECTION */
-.searchbox{ background: var(--card-bg); padding: 30px; border-radius: 18px; border: 1px solid var(--outline-color); }
-input{ width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #333; background: var(--input-bg); color: white; font-size: 16px; margin-bottom: 15px; text-align: center; outline: none; }
-input:focus { border-color: var(--primary-color); }
-button.search-btn{ width: 100%; padding: 15px; border: none; border-radius: 12px; background: var(--primary-color); color: white; font-weight: 800; font-size: 16px; cursor: pointer; text-transform: uppercase; }
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-/* WHATSAPP FLOATING MENU (4 BUTTONS) */
-.wa-float { position: fixed; bottom: 25px; right: 25px; z-index: 1000; }
-.wa-main-btn {
-    background: var(--primary-color); width: 60px; height: 60px;
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 15px; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-}
-.wa-icon { width: 35px; height: 35px; fill: white; }
-.wa-menu {
-    position: absolute; bottom: 75px; right: 0; background: var(--card-bg);
-    border: 1px solid var(--primary-color); border-radius: 15px;
-    width: 220px; padding: 12px; display: none; flex-direction: column; gap: 10px;
-}
-.wa-menu.active { display: flex; }
-.wa-link { text-decoration: none; color: white; background: #1e1e21; padding: 12px; border-radius: 8px; font-size: 13px; font-weight: bold; text-align: center; border: 1px solid transparent; }
-.wa-link:hover { border-color: var(--primary-color); }
+  .tab-panel.active { animation: fadeUp 0.4s ease; }
 
-/* RESULTS & MAP */
-.result-page{ background: var(--card-bg); border-radius: 18px; overflow: hidden; margin-top: 25px; border: 1px solid var(--outline-color); }
-.result-header{ background: var(--primary-color); color: white; padding: 15px; font-weight: 800; text-align: center; }
-.result-table{ width: 100%; border-collapse: collapse; }
-.result-table td{ border-bottom: 1px solid #222; padding: 15px; font-size: 14px; }
-.result-table td:first-child{ font-weight: bold; color: var(--accent-color); width: 35%; text-transform: uppercase; font-size: 11px; }
+  /* Responsive */
+  @media (max-width: 550px) {
+    #main-content { padding: 16px 12px 80px; }
+    .result-row { flex-direction: column; gap: 6px; }
+    .result-label { width: auto; }
+  }
 
-.map-container { padding: 15px; background: #000; }
-.map-frame {
-    width: 100%; height: 200px;
-    border: 1px solid #333; border-radius: 12px;
-    margin-bottom: 12px;
-}
-.action-buttons { display: flex; gap: 10px; flex-direction: column; }
-.view-map-btn, .copy-map-btn {
-    display: block; width: 100%;
+  /* Footer */
+  .footer-credit {
     text-align: center;
-    padding: 12px; text-decoration: none;
-    font-weight: bold; border-radius: 10px;
-    font-size: 12px; cursor: pointer; border: none;
-}
-.view-map-btn { background: var(--outline-color); color: white; }
-.copy-map-btn { background: #333; color: #00ff00; border: 1px solid #444; }
-
-.loader { display: none; text-align: center; margin-top: 20px; }
-@keyframes spin { to { transform: rotate(360deg); } }
+    margin-top: 32px;
+    padding: 20px;
+    border-top: 1px solid var(--glass-border);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
 </style>
 </head>
+<body>
 
-<body data-shade="0">
-
-<div class="app" id="mainApp">
-    <div class="theme-container">
-        <button class="theme-btn" onclick="toggleThemeBar()">🎨 THEME</button>
-        <div class="theme-bar" id="themeBar">
-            <div class="shade-bar" style="background:#9c27b0" onclick="setShade('0')">PURPLE</div>
-            <div class="shade-bar" style="background:#e53935" onclick="setShade('1')">RED</div>
-            <div class="shade-bar" style="background:#ffb300" onclick="setShade('2')">GOLD</div>
-            <div class="shade-bar" style="background:#43a047" onclick="setShade('3')">GREEN</div>
-            <div class="shade-bar" style="background:#1e88e5" onclick="setShade('4')">BLUE</div>
-            <div class="shade-bar" style="background:#d81b60" onclick="setShade('5')">PINK</div>
-            <div class="shade-bar" style="background:#00acc1" onclick="setShade('6')">CYAN</div>
-            <div class="shade-bar" style="background:#ff5722" onclick="setShade('7')">ORANGE</div>
-            <div class="shade-bar" style="background:#795548" onclick="setShade('8')">BROWN</div>
-            <div class="shade-bar" style="background:#607d8b" onclick="setShade('9')">GREY</div>
-            <div class="shade-bar" style="background: linear-gradient(45deg, red, blue, green); border:1px solid #fff" onclick="setShade('multi')">MULTI RGB</div>
-        </div>
-    </div>
-
-    <div class="header-container">
-        <img src="https://multi-host.ct.ws/sites/1772277072517.png" alt="Logo" class="header-img">
-        <div class="brand-title">ATTA PATHAN DATABASE</div>
-    </div>
-
-    <div class="searchbox">
-        <label style="font-size:11px; color:var(--accent-color); font-weight:bold; margin-bottom:10px; display:block;">MOBILE NUMBER</label>
-        <input id="phoneInput" type="text" placeholder="03XXXXXXXXX" maxlength="11">
-        <button class="search-btn" onclick="executeSearch()">SEARCH DATABASE</button>
-    </div>
-
-    <div class="loader" id="loader">
-        <div style="width:40px;height:40px;border:4px solid #333;border-top:4px solid var(--primary-color);border-radius:50%;animation:spin .8s linear infinite;margin:auto;"></div>
-    </div>
-
-    <div id="status" style="text-align:center; margin-top:15px; color:var(--primary-color); font-weight:bold;"></div>
-    <div id="results"></div>
+<!-- Splash Screen -->
+<div id="splash">
+  <div class="splash-logo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+  </div>
+  <div class="splash-title">ATTA PATHAN BJR</div>
+  <div class="splash-sub">ELITE INTELLIGENCE SUITE</div>
+  <button class="btn-primary" onclick="startApp()">ENTER SECURE NODE →</button>
 </div>
 
-<div class="wa-float" id="waFloat">
-    <div class="wa-menu" id="waMenu">
-        <a href="https://whatsapp.com/channel/0029VbBbJoMD38CXtkQTqB0c" target="_blank" class="wa-link">Official Channel</a>
-        <a href="https://whatsapp.com/channel/0029VbBbJoMD38CXtkQTqB0c" target="_blank" class="wa-link">Official Group 1</a>
-        <a href="https://https://whatsapp.com/channel/0029VbBbJoMD38CXtkQTqB0c" target="_blank" class="wa-link">Official Group 2</a>
-        <a href="https://wa.link/e7rl2m" target="_blank" class="wa-link" style="background:var(--primary-color)">CONTACT OWNER</a>
+<!-- Join WhatsApp Popup -->
+<div id="join-popup">
+  <div class="glass-card" style="max-width: 340px; width: 90%; padding: 32px 24px; text-align: center;">
+    <div style="width: 64px; height: 64px; background: #25D36620; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
     </div>
-    <div class="wa-main-btn" onclick="toggleWAMenu()">
-        <svg class="wa-icon" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.4-8.6-44.6-27.5-16.5-14.7-27.6-32.8-30.8-38.4-3.2-5.6-.3-8.6 2.5-11.4 2.5-2.5 5.5-6.5 8.3-9.7 2.8-3.2 3.7-5.5 5.5-9.3 1.9-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.4 3.6 35 2.2 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+    <h3 style="margin-bottom: 8px; font-size: 1.3rem;">Join Official Channel</h3>
+    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 24px;">Get exclusive tools, updates & VIP access from ATTA PATHAN</p>
+    <div style="display: flex; gap: 12px;">
+      <button class="btn-secondary" style="flex:1;" onclick="closeJoin()">Cancel</button>
+      <button class="btn-primary" style="flex:1;" onclick="goJoin()">Join Now</button>
     </div>
+  </div>
+</div>
+
+<!-- Sidebar Overlay -->
+<div class="sb-overlay" id="sb-overlay" onclick="closeSidebar()"></div>
+
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar-closed">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+    <span style="font-weight: 800; font-size: 1rem;">ATTA PATHAN </span>
+    <button class="btn-secondary" style="padding: 6px;" onclick="closeSidebar()">✕</button>
+  </div>
+  <div style="height: 2px; background: linear-gradient(90deg, var(--primary), transparent); margin: 10px 0 20px;"></div>
+  
+  <nav style="display: flex; flex-direction: column; gap: 8px;">
+    <div class="nav-item" onclick="closeSidebar();switchTab('pk')">📍 Pakistan SIM Trace</div>
+    <div class="nav-item" onclick="closeSidebar();switchTab('india')">🇮🇳 Indian Number Info</div>
+    <div class="nav-item" onclick="closeSidebar();switchTab('history')">📜 Search History</div>
+    <div class="nav-item" onclick="closeSidebar();switchTab('about')">🏢 About Us</div>
+    <div class="nav-item" onclick="closeSidebar();switchTab('guide')">📘 Guide & Docs</div>
+  </nav>
+
+  <div style="margin-top: auto; padding-top: 24px; font-size: 0.7rem; color: var(--text-muted); text-align: center;">
+    Powered by ATTA PATHAN<br>Elite Intelligence Network
+  </div>
+</div>
+
+<!-- Top Navigation -->
+<nav id="topnav">
+  <button class="btn-secondary" style="padding: 8px 12px;" onclick="openSidebar()">☰ MENU</button>
+  <div class="logo-text">ATTA PATHAN</div>
+  <button class="btn-secondary" style="padding: 8px 12px;" onclick="toggleThemePanel()">🎨</button>
+</nav>
+
+<!-- Theme Panel -->
+<div id="theme-panel">
+  <div style="font-weight: 700; margin-bottom: 12px;">LUXURY THEMES</div>
+  <div class="theme-opt active" onclick="setTheme('dark',this)"><span>⚫</span> Dark Imperial</div>
+  <div class="theme-opt" onclick="setTheme('purple',this)"><span>🟣</span> Royal Violet</div>
+  <div class="theme-opt" onclick="setTheme('cyan',this)"><span>🔷</span> Cyber Cyan</div>
+  <div class="theme-opt" onclick="setTheme('gold',this)"><span>🏆</span> Golden Prestige</div>
+  <div class="theme-opt" onclick="setTheme('light',this)"><span>☀️</span> Arctic Luxe</div>
+</div>
+
+<!-- Main Content -->
+<div id="main-content">
+
+  <!-- Profile Header -->
+  <div style="text-align: center; margin-bottom: 28px;">
+    <div style="width: 95px; height: 95px; margin: 0 auto 16px; border-radius: 50%; overflow: hidden; border: 2px solid var(--primary); box-shadow: 0 0 30px var(--primary-glow); display: flex; align-items: center; justify-content: center;">
+      <img src="https://pari.page.gd/sites/6129-4350.jpg" alt="ATTA PATHAN" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <h2 style="font-size: 1.4rem;">ATTA PATHAN</h2>
+    <p style="color: var(--primary); font-weight: 600; letter-spacing: 0.1em;">ELITE SECURITY NODE</p>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs-container">
+    <button id="tab-pk" class="tab-btn active" onclick="switchTab('pk')">Pakistan SIM</button>
+    <button id="tab-india" class="tab-btn" onclick="switchTab('india')">Indian Info</button>
+    <button id="tab-history" class="tab-btn" onclick="switchTab('history')">History</button>
+    <button id="tab-about" class="tab-btn" onclick="switchTab('about')">About</button>
+    <button id="tab-guide" class="tab-btn" onclick="switchTab('guide')">Guide</button>
+  </div>
+
+  <!-- Pakistan SIM Panel -->
+  <div class="tab-panel active" id="panel-pk">
+    <div class="glass-card" style="padding: 24px; margin-bottom: 20px;">
+      <h3 style="margin-bottom: 6px;">Pakistan SIM Database</h3>
+      <p style="color: var(--text-muted); font-size: 0.75rem; margin-bottom: 20px;">Enter 03XXXXXXX or CNIC without dashes</p>
+      <input type="text" id="pk-input" class="input-premium" placeholder="e.g., 03XXXXXXXXX or 1234567890123" style="margin-bottom: 16px;">
+      <button class="btn-primary" style="width: 100%;" onclick="searchPK()">🔍 Trace Intelligence</button>
+    </div>
+    <div id="pk-result"></div>
+  </div>
+
+  <!-- Indian Info Panel -->
+  <div class="tab-panel" id="panel-india">
+    <div class="glass-card" style="padding: 24px; margin-bottom: 20px;">
+      <h3 style="margin-bottom: 6px;">Indian Mobile Intelligence</h3>
+      <p style="color: var(--text-muted); font-size: 0.75rem; margin-bottom: 20px;">Enter 10-digit Indian mobile number</p>
+      <input type="text" id="india-input" class="input-premium" placeholder="e.g., 9876543210" style="margin-bottom: 16px;">
+      <button class="btn-primary" style="width: 100%;" onclick="searchIndia()">🌐 Fetch Records</button>
+    </div>
+    <div id="india-result"></div>
+  </div>
+
+  <!-- History Panel -->
+  <div class="tab-panel" id="panel-history">
+    <div class="glass-card" style="padding: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h3>Search Logs</h3>
+        <button class="btn-secondary" onclick="clearHistory()">Clear All</button>
+      </div>
+      <div id="history-list"></div>
+    </div>
+  </div>
+
+  <!-- About Panel -->
+  <div class="tab-panel" id="panel-about">
+    <div class="glass-card" style="padding: 28px;">
+      <h3 style="margin-bottom: 16px;">◈ ATTA PATHAN</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 24px;">Elite digital intelligence operators providing next-generation SIM lookup tools, forensic data analysis, and cybersecurity solutions. Trusted by thousands across the subcontinent.</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px;">
+        <div><span style="color: var(--text-muted);">Founded</span><br><strong>2023</strong></div>
+        <div><span style="color: var(--text-muted);">Specialization</span><br><strong>SIM Intelligence</strong></div>
+        <div><span style="color: var(--text-muted);">Status</span><br><strong style="color: #10B981;">● Operational</strong></div>
+        <div><span style="color: var(--text-muted);">Users</span><br><strong>50K+</strong></div>
+      </div>
+      <div style="border-top: 1px solid var(--glass-border); padding-top: 20px;">
+        <h4>Official Channels</h4>
+        <div style="display: flex; gap: 16px; margin-top: 16px;">
+          <a href="https://whatsapp.com/channel/0029VbBbJoMD38CXtkQTqB0c" target="_blank" class="btn-secondary" style="display: inline-flex; gap: 8px;">📱 WhatsApp Channel</a>
+          <a href="https://whatsapp.com/channel/0029VbBbJoMD38CXtkQTqB0c" target="_blank" class="btn-secondary" style="display: inline-flex; gap: 8px;">▶️ YouTube</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Guide Panel -->
+  <div class="tab-panel" id="panel-guide">
+    <div class="glass-card" style="padding: 28px;">
+      <h3 style="margin-bottom: 20px;">Operation Manual</h3>
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div><strong style="color: var(--primary);">Pakistan SIM Trace:</strong> Enter Pakistani mobile number (starting with 03) or CNIC (13 digits without dashes). Get owner name, address, operator details instantly.</div>
+        <div><strong style="color: var(--primary);">Indian Number Info:</strong> Enter 10-digit Indian mobile number. Retrieve name, father name, state, operator, address, and more.</div>
+        <div><strong style="color: var(--primary);">Themes & UI:</strong> Click the palette icon (top right) to switch between 5 luxury themes. Dark Imperial, Royal Violet, Cyber Cyan, Golden Prestige, Arctic Luxe.</div>
+        <div><strong style="color: var(--primary);">Data Privacy:</strong> All searches are encrypted. History is stored locally on your device. No external tracking.</div>
+      </div>
+      <div class="footer-credit" style="margin-top: 28px; border: none;">Powered by ATTA PATHAN Elite API</div>
+    </div>
+  </div>
+
+  <div class="footer-credit">
+    DEVELOPED BY <strong style="color: var(--primary);">ATTA PATHAN</strong> | DATA PROVIDED BY ATTA PATHAN
+  </div>
 </div>
 
 <script>
-function toggleThemeBar() {
-    document.getElementById("themeBar").classList.toggle("active");
-}
-
-function setShade(shade) {
-    document.body.setAttribute("data-shade", shade);
-    document.getElementById("themeBar").classList.remove("active");
-}
-
-function toggleWAMenu() {
-    document.getElementById("waMenu").classList.toggle("active");
-}
-
-const API = "https://howler-database-api.vercel.app/api/lookup?phone=";
-
-async function executeSearch() {
-    const num = document.getElementById("phoneInput").value.trim();
-    const loader = document.getElementById("loader");
-    const results = document.getElementById("results");
-    const status = document.getElementById("status");
-
-    if (num.length < 10) {
-        status.innerText = "Error: Invalid Number";
-        return;
+  // ========== THEME SYSTEM ==========
+  const themes = {
+    dark: { '--primary': '#8B5CF6', '--primary-dark': '#6D28D9', '--bg-dark': '#05050A', '--bg-card': 'rgba(18,18,28,0.85)', '--text-primary': '#FFFFFF', '--text-secondary': '#A1A1B5' },
+    purple: { '--primary': '#A855F7', '--primary-dark': '#7E22CE', '--bg-dark': '#0A0512', '--bg-card': 'rgba(25,15,40,0.9)', '--text-primary': '#F3E8FF', '--text-secondary': '#C4B5FD' },
+    cyan: { '--primary': '#06B6D4', '--primary-dark': '#0891B2', '--bg-dark': '#05161A', '--bg-card': 'rgba(8,35,45,0.85)', '--text-primary': '#E0F2FE', '--text-secondary': '#BAE6FD' },
+    gold: { '--primary': '#F59E0B', '--primary-dark': '#D97706', '--bg-dark': '#140C02', '--bg-card': 'rgba(30,25,10,0.9)', '--text-primary': '#FFFBEB', '--text-secondary': '#FDE68A' },
+    light: { '--primary': '#2563EB', '--primary-dark': '#1D4ED8', '--bg-dark': '#F8FAFC', '--bg-card': 'rgba(255,255,255,0.85)', '--text-primary': '#0F172A', '--text-secondary': '#475569' }
+  };
+  function setTheme(name, el) {
+    const theme = themes[name];
+    if(theme) {
+      Object.entries(theme).forEach(([key, val]) => document.documentElement.style.setProperty(key, val));
+      localStorage.setItem('raix_theme', name);
+      document.querySelectorAll('.theme-opt').forEach(o => o.classList.remove('active'));
+      if(el) el.classList.add('active');
+      if(name === 'light') document.body.style.backgroundColor = '#F8FAFC';
+      else document.body.style.backgroundColor = '';
     }
+  }
+  const savedTheme = localStorage.getItem('raix_theme') || 'dark';
+  setTheme(savedTheme, document.querySelector(`.theme-opt[onclick*="${savedTheme}"]`));
 
-    results.innerHTML = "";
-    status.innerText = "";
-    loader.style.display = "block";
+  function toggleThemePanel() {
+    document.getElementById('theme-panel').classList.toggle('show');
+  }
 
+  // ========== UI HELPERS ==========
+  function startApp() {
+    document.getElementById('splash').classList.add('hide');
+    setTimeout(() => { document.getElementById('join-popup').classList.add('show'); }, 500);
+  }
+  function closeJoin() { document.getElementById('join-popup').classList.remove('show'); }
+  function goJoin() { window.open('https://whatsapp.com/channel/0029VbBbJoMD38CXtkQTqB0c', '_blank'); document.getElementById('join-popup').classList.remove('show'); }
+  function openSidebar() { document.getElementById('sidebar').classList.replace('sidebar-closed', 'sidebar-open'); document.getElementById('sb-overlay').classList.add('show'); }
+  function closeSidebar() { document.getElementById('sidebar').classList.replace('sidebar-open', 'sidebar-closed'); document.getElementById('sb-overlay').classList.remove('show'); }
+  
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+    
+    const targetBtn = document.getElementById(`tab-${tab}`);
+    const targetPanel = document.getElementById(`panel-${tab}`);
+    
+    if(targetBtn) targetBtn.classList.add('active');
+    if(targetPanel) targetPanel.classList.add('active');
+    if(tab === 'history') renderHistory();
+  }
+
+  // ========== PAKISTAN API ==========
+  const PK_API = 'https://sim-info-api.wasif-ali.workers.dev/?search=';
+  async function searchPK() {
+    const val = document.getElementById('pk-input').value.trim();
+    if(!val) return;
+    const container = document.getElementById('pk-result');
+    container.innerHTML = `<div class="glass-card" style="padding: 40px; text-align: center;">⏳ Tracing Node...</div>`;
     try {
-        const res = await fetch(API + num);
-        const data = await res.json();
-        loader.style.display = "none";
+      const res = await fetch(PK_API + encodeURIComponent(val));
+      const json = await res.json();
+      const records = json.records || [];
+      if(json.success && records.length) {
+        let html = '';
+        records.forEach((r,i) => {
+          html += `<div class="result-item"><div class="result-header"><span>📄 RECORD ${i+1}</span></div>
+            <div class="result-row"><div class="result-label">Full Name</div><div class="result-value accent-text">${r.name || r.full_name || '—'}</div></div>
+            <div class="result-row"><div class="result-label">Mobile</div><div class="result-value">${r.mobile || val}</div></div>
+            <div class="result-row"><div class="result-label">CNIC</div><div class="result-value">${r.cnic || '—'}</div></div>
+            <div class="result-row"><div class="result-label">Address</div><div class="result-value">${r.address || '—'}</div></div>
+            <div class="result-row"><div class="result-label">Network</div><div class="result-value">${r.network || r.operator || '—'}</div></div>
+            <div class="result-header" style="border-top:1px solid var(--glass-border);"><span>🔒 Data by ATTA PATHAN </span></div></div>`;
+        });
+        container.innerHTML = html;
+        saveHistory({ num: val, name: records[0].name || 'Unknown', type: 'PK' });
+      } else {
+        container.innerHTML = `<div class="glass-card" style="padding: 30px; text-align: center;">⚠️ No records found for ${val}</div>`;
+      }
+    } catch(e) { container.innerHTML = `<div class="glass-card" style="padding: 30px; text-align: center;">❌ Network Error. Check connection.</div>`; }
+  }
+  document.getElementById('pk-input')?.addEventListener('keypress', e => { if(e.key === 'Enter') searchPK(); });
 
-        if (!data.success || !data.result || data.result.length === 0) {
-            status.innerText = "No Records Found";
-            return;
-        }
-        renderAll(data.result);
-    } catch (e) {
-        loader.style.display = "none";
-        status.innerText = "API Offline";
-    }
-}
+  // ========== INDIAN API ==========
+  const IN_API = 'https://wasifali-indian-number-info.vercel.app/api?number=';
+  async function searchIndia() {
+    const val = document.getElementById('india-input').value.trim();
+    if(!val) return;
+    const container = document.getElementById('india-result');
+    container.innerHTML = `<div class="glass-card" style="padding: 40px; text-align: center;">⏳ Fetching Intelligence...</div>`;
+    try {
+      const res = await fetch(IN_API + encodeURIComponent(val));
+      const json = await res.json();
+      if(json.success && json.number_detail) {
+        const d = json.number_detail;
+        let html = `<div class="result-item"><div class="result-header"><span>🇮🇳 INDIAN PROFILE</span></div>
+          <div class="result-row"><div class="result-label">Number</div><div class="result-value">${json.number || val}</div></div>
+          <div class="result-row"><div class="result-label">Name</div><div class="result-value accent-text">${d.name || '—'}</div></div>
+          <div class="result-row"><div class="result-label">Father Name</div><div class="result-value">${d.father_name || '—'}</div></div>
+          <div class="result-row"><div class="result-label">Operator</div><div class="result-value">${d.operator || '—'}</div></div>
+          <div class="result-row"><div class="result-label">State/Circle</div><div class="result-value">${d.state || d.circle || '—'}</div></div>
+          <div class="result-row"><div class="result-label">District</div><div class="result-value">${d.district || '—'}</div></div>
+          <div class="result-row"><div class="result-label">Address</div><div class="result-value">${d.full_address || d.village_city || '—'}</div></div>
+          <div class="result-header" style="border-top:1px solid var(--glass-border);"><span>🔒 Powered by ATTA PATHAN</span></div></div>`;
+        container.innerHTML = html;
+        saveHistory({ num: val, name: d.name || 'Unknown', type: 'IN' });
+      } else {
+        container.innerHTML = `<div class="glass-card" style="padding: 30px; text-align: center;">⚠️ No data for ${val}</div>`;
+      }
+    } catch(e) { container.innerHTML = `<div class="glass-card" style="padding: 30px; text-align: center;">❌ API Error. Please retry.</div>`; }
+  }
+  document.getElementById('india-input')?.addEventListener('keypress', e => { if(e.key === 'Enter') searchIndia(); });
 
-function copyToClipboard(text, btn) {
-    navigator.clipboard.writeText(text).then(() => {
-        const originalText = btn.innerText;
-        btn.innerText = "✅ COPIED!";
-        setTimeout(() => { btn.innerText = originalText; }, 2000);
-    });
-}
+  // ========== HISTORY ==========
+  let searchHistory = JSON.parse(localStorage.getItem('raix_history') || '[]');
+  function saveHistory(item) { searchHistory.unshift(item); if(searchHistory.length > 20) searchHistory.pop(); localStorage.setItem('raix_history', JSON.stringify(searchHistory)); renderHistory(); }
+  function renderHistory() {
+    const list = document.getElementById('history-list');
+    if(!list) return;
+    if(!searchHistory.length) { list.innerHTML = '<div style="padding: 30px; text-align: center; color: var(--text-muted);">No search logs available.</div>'; return; }
+    list.innerHTML = searchHistory.map(h => `<div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; border-bottom: 1px solid var(--glass-border);"><div><strong>${h.num}</strong><br><span style="font-size:0.7rem; color:var(--text-muted);">${h.name}</span></div><span style="font-size:0.7rem; background: var(--primary-glow); padding: 4px 8px; border-radius: 20px;">${h.type}</span></div>`).join('');
+  }
+  function clearHistory() { searchHistory = []; localStorage.removeItem('raix_history'); renderHistory(); }
+  renderHistory();
 
-function renderAll(records) {
-    const results = document.getElementById("results");
-    results.innerHTML = "";
-    records.forEach((r, index) => {
-        const address = r.address || "N/A";
-        // Map URLs fixed for proper template literal syntax
-        const mapEmbedUrl = `http://maps.google.com/maps?q=${encodeURIComponent(address)}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
-        const mapExternalUrl = `https://www.google.com/maps?q=${encodeURIComponent(address)}`;
-
-        results.innerHTML += `
-        <div class="result-page">
-            <div class="result-header">RECORD #${index + 1}</div>
-            <table class="result-table">
-                <tr><td>NAME</td><td>${r.name || "N/A"}</td></tr>
-                <tr><td>CNIC</td><td>${r.cnic || "N/A"}</td></tr>
-                <tr><td>MOBILE</td><td>${r.mobile || "N/A"}</td></tr>
-                <tr><td>ADDRESS</td><td>${address}</td></tr>
-            </table>
-            
-            ${address !== "N/A" ? `
-            <div class="map-container">
-                <iframe class="map-frame" src="${mapEmbedUrl}" frameborder="0"></iframe>
-                <div class="action-buttons">
-                    <a href="${mapExternalUrl}" target="_blank" class="view-map-btn">📍 OPEN IN GOOGLE MAPS</a>
-                    <button class="copy-map-btn" onclick="copyToClipboard('${mapExternalUrl}', this)">🔗 COPY MAP LINK</button>
-                </div>
-            </div>` : ''}
-
-            <div style="padding:15px; text-align:center;">
-                <button style="background:#222; color:white; border:1px solid #444; padding:8px 20px; border-radius:8px; cursor:pointer;" onclick="resetSearch()">NEW SEARCH</button>
-            </div>
-        </div>`;
-    });
-}
-
-function resetSearch() {
-    document.getElementById("phoneInput").value = "";
-    document.getElementById("results").innerHTML = "";
-    document.getElementById("status").innerText = "";
-}
-
-window.onclick = function(event) {
-    if (!event.target.closest('.theme-container')) {
-        document.getElementById("themeBar").classList.remove("active");
-    }
-    if (!event.target.closest('.wa-float')) {
-        document.getElementById("waMenu").classList.remove("active");
-    }
-}
+  // Close theme panel on outside click
+  document.addEventListener('click', (e) => {
+    if(!e.target.closest('#theme-panel') && !e.target.closest('[onclick*="toggleThemePanel"]')) document.getElementById('theme-panel')?.classList.remove('show');
+    if(!e.target.closest('#sidebar') && !e.target.closest('[onclick*="openSidebar"]') && !e.target.closest('#sb-overlay')) closeSidebar();
+  });
 </script>
-
 </body>
 </html>
+
+```
